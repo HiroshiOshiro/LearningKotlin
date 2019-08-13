@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="price_label">Price</string>
+    <string name="discount_label">Discount rate</string>
+    <string name="caluculate_button">Caliculate</string>
+    <string name="price_error">Please input original price.</string>
+    <string name="discount_error">Please input discount rate.</string>
+    <string name="expression">%1$,3d円の%2$d%%引きは</string>
+    <string name="result">%1$,3d円です。</string>
+</resources>
