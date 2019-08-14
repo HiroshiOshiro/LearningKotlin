@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--PARAMETERS FOR START ACTIVITY WITH RESULT REQUEST-->
+    <integer name="request_select_time_zone">1</integer>
+
+
+</resources>
