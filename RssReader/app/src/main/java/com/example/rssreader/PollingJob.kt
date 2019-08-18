@@ -3,6 +3,7 @@ package com.example.rssreader
 import android.app.job.JobParameters
 import android.app.job.JobService
 import android.content.Context
+import android.util.Log
 
 class PollingJob() : JobService() {
     override fun onStopJob(params: JobParameters?): Boolean {
@@ -10,11 +11,13 @@ class PollingJob() : JobService() {
     }
 
     override fun onStartJob(params: JobParameters?): Boolean {
+        Log.d("PollingJob", "job started!")
         Thread {
             // RSSをダウンロードする
             val response = httpGet("https://www.sbbit.jp/rss/HotTopics.rss")
 
             if (response != null) {
+
                 // RSSオブジェクトにパースする
                 val rss = parseRss(response)
 
@@ -25,9 +28,10 @@ class PollingJob() : JobService() {
                 val lastFetchedTime = prefs.getLong("last_published_time", 0L)
                 // 通知する
                 if (lastFetchedTime > 0 && lastFetchedTime < rss.pubDate.time) {
+                    Log.d("PollingJob", "New article existing!")
                     notifyUpdate(this)
                 }
-                
+
                 // 取得時感を保存する
                 prefs.edit().putLong("last_published_time", rss.pubDate.time).apply()
             }
